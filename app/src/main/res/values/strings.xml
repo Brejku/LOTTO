@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">LOTTO</string>
+    <string name="logohere">logoHere</string>
+    <string name="n1">N1</string>
+    <string name="n2">N2</string>
+    <string name="n4">N4</string>
+    <string name="n5">N5</string>
+    <string name="n6">N6</string>
+    <string name="n3">N3</string>
+    <string name="your_numbers">Your numbers :</string>
+    <string name="result">LOTTO Result :</string>
+</resources>

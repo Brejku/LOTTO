@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.daniel.lotto.MainActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="85sp"
+        android:layout_marginTop="65sp"
+        android:contentDescription="@string/logohere"
+        android:src="@drawable/lotto" />
+
+    <TextView
+        android:id="@+id/requirements"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:text="Choose numbers from 1 to 49"
+        android:gravity="center_horizontal"
+        android:textSize="17sp"/>
+
+    <TableRow
+        android:id="@+id/numbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35sp"
+        android:theme="@style/App_EditTextStyle">
+
+        <EditText
+            android:id="@+id/firstInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n1"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/secondInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n2"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/thirdInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n3"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/fourthInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n4"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/fifthInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n5"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/sixthInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n6"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+    <Button
+        android:id="@+id/sendDataButton"
+        android:layout_width="145sp"
+        android:layout_height="70sp"
+        android:layout_below="@+id/numbers"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/faster_one"
+        android:onClick="sendData"
+        android:text="Send"
+        android:textStyle="normal"
+        android:theme="@style/Button_Color" />
+
+</RelativeLayout>

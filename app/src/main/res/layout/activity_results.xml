@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.daniel.lotto.ResultsActivity">
+
+
+    <ImageView
+        android:id="@+id/logo2"
+        android:layout_width="match_parent"
+        android:layout_height="85sp"
+        android:layout_marginTop="85sp"
+        android:contentDescription="@string/logohere"
+        android:src="@drawable/lotto" />
+
+    <TextView
+        android:id="@+id/userNumbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25sp"
+        android:text="@string/your_numbers"
+        android:textSize="19sp"
+        android:layout_below="@id/logo2"/>
+
+    <TableRow
+        android:id="@+id/yourNumbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5sp"
+        android:theme="@style/App_EditTextStyle"
+        android:layout_below="@id/userNumbers"
+        >
+
+        <TextView
+            android:id="@+id/firstInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n1"
+            android:padding="4dp"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold"
+            android:theme="@style/App_TextViewBackground" />
+
+        <TextView
+            android:id="@+id/secondInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n2"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold"
+            android:theme="@style/App_TextViewBackground"/>
+
+        <TextView
+            android:id="@+id/thirdInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n3"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold"
+            android:theme="@style/App_TextViewBackground"/>
+
+        <TextView
+            android:id="@+id/fourthInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n4"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold"
+            android:theme="@style/App_TextViewBackground"/>
+
+        <TextView
+            android:id="@+id/fifthInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n5"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold"
+            android:theme="@style/App_TextViewBackground"/>
+
+        <TextView
+            android:id="@+id/sixthInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n6"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold"
+            android:theme="@style/App_TextViewBackground"/>
+
+    </TableRow>
+
+    <TextView
+        android:id="@+id/resultNumbersText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/yourNumbers"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35sp"
+        android:text="@string/result"
+        android:textSize="19sp" />
+
+    <TableRow
+        android:id="@+id/resultNumbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5sp"
+        android:layout_below="@id/resultNumbersText"
+        android:theme="@style/App_EditTextStyle"
+        >
+
+        <TextView
+            android:id="@+id/firstResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n1"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold"
+            android:theme="@style/App_TextViewBackground"/>
+
+        <TextView
+            android:id="@+id/secondResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n2"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold"
+            android:theme="@style/App_TextViewBackground"/>
+
+        <TextView
+            android:id="@+id/thirdResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n3"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold"
+            android:theme="@style/App_TextViewBackground"/>
+
+        <TextView
+            android:id="@+id/fourthResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n4"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold"
+            android:theme="@style/App_TextViewBackground"/>
+
+        <TextView
+            android:id="@+id/fifthResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n5"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold"
+            android:theme="@style/App_TextViewBackground"/>
+
+        <TextView
+            android:id="@+id/sixthResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/n6"
+            android:textColor="@android:color/holo_orange_light"
+            android:textStyle="bold"
+            android:theme="@style/App_TextViewBackground"/>
+
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="170sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/resultNumbers"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15sp">
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="85sp"
+            android:layout_height="55sp"
+            android:layout_below="@+id/resultNumbers"
+            android:layout_toLeftOf="@+id/rerollButton"
+            android:layout_toStartOf="@+id/rerollButton"
+            android:text="Go back"
+            android:onClick="goBack"
+            android:textSize="12sp"/>
+
+        <Button
+            android:id="@+id/reloadButton"
+            android:layout_width="85sp"
+            android:layout_height="55sp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginRight="26dp"
+            android:text="Reload"
+            android:onClick="reload"
+            android:textSize="12sp"/>
+    </TableRow>
+
+</RelativeLayout>
