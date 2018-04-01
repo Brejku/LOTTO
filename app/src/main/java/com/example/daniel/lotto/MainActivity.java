@@ -1,57 +1,73 @@
 package com.example.daniel.lotto;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.text.Spanned;
-import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button sendButton;
     EditText number1, number2, number3, number4, number5, number6;
 
+    ArrayList<Integer> intArray = new ArrayList<>();
     int[] intInput = new int[6];
     String[] stringInput = new String[6];
-    public  int y;
+    public int y;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-    public void sendData(View view){
+        findAllViews();
+        setLimiters();
+        sendButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
 
         EditText[] etInput = {number1, number2, number3, number4, number5, number6};
 
         // Check whether input is empty, or has wrong value, or is out of range
-        if(!isEmpty(etInput) && !hasWrongValue(etInput) && isInRange(etInput)){
+        if (!isEmpty(etInput) && !hasWrongValue(etInput) && isInRange(etInput)) {
 
-            // If all values are correct, create intent.
-            Intent intent = new Intent(this,ResultsActivity.class);
+
+            intArray.clear();
 
             // Load all values into INT type array
-            for(int i=0;i<etInput.length;i++) {
+            for (EditText etValue : etInput) {
 
-                intInput[i] = Integer.valueOf(etInput[i].getText().toString());
+                intArray.add(Integer.valueOf(etValue.getText().toString()));
 
             }
 
             // Ascending sorting of INT array
             Arrays.sort(intInput);
 
+            Collections.sort(intArray);
 
             // Check if INT array has repeated numbers in it
-            if(!hasRepetitions(intInput)){
+            if (!hasRepetitions(intArray)) {
+
+                // If all values are correct, create intent.
+                Intent intent = new Intent(this, ResultsActivity.class);
 
                 // Send INT array to Result Activity
-                intent.putExtra("ValuePCG",intInput);
+                intent.putIntegerArrayListExtra("ValuePCG" ,intArray);
+                //intent.putExtra("ValuePCG", intInput);
 
                 // Start Result Activity
                 startActivity(intent);
@@ -60,15 +76,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public boolean isEmpty(EditText[] etInput){
+    public boolean isEmpty(EditText[] etInput) {
 
         int counter = 1;
 
-        for(int i=0;i<etInput.length;i++) {
+        for (int i = 0; i < etInput.length; i++) {
 
             if (etInput[i].getText().toString().trim().isEmpty()) {
 
-                makeToast("Empty field number "+counter);
+                makeToast("Empty field number " + counter);
 
                 return true;
 
@@ -78,37 +94,36 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-    public boolean hasWrongValue(EditText[] etInput){
+    public boolean hasWrongValue(EditText[] etInput) {
 
         int counter = 1;
-        for(int i=0;i<etInput.length;i++) {
+        for (int i = 0; i < etInput.length; i++) {
 
-            try{
+            try {
 
                 Integer.parseInt(etInput[i].getText().toString());
-                Log.i("MSG",counter+" OK");
+                Log.i("MSG", counter + " OK");
                 counter++;
 
-            }catch (Exception e){
+            } catch (Exception e) {
 
-                makeToast("Wrong input in field number "+counter);
-                Log.i("MSG",counter+" WRONG VALUE");
+                makeToast("Wrong input in field number " + counter);
+                Log.i("MSG", counter + " WRONG VALUE");
                 return true;
             }
         }
         return false;
     }
 
-    public boolean isInRange(EditText[] etInput){
+    public boolean isInRange(EditText[] etInput) {
 
         int counter = 1;
 
-        for(int i=0;i<etInput.length;i++) {
+        for (int i = 0; i < etInput.length; i++) {
             int value = Integer.valueOf(etInput[i].getText().toString());
 
-            if(value <= 0 || value > 49)
-            {
-                makeToast("Number in position "+counter+" is out of range.");
+            if (value <= 0 || value > 49) {
+                makeToast("Number in position " + counter + " is out of range.");
                 return false;
             }
             counter++;
@@ -117,39 +132,35 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public boolean hasRepetitions(int[] intValue){
+    public boolean hasRepetitions(ArrayList intValue) {
 
-        for(int i = 0 ;i < intValue.length-1; i++){
+        for (int i = 0; i < intValue.size(); i++) {
 
-            if(intValue[i]-intValue[i+1] == 0){
-                makeToast("Input has repeated values");
-                return true;
+            for (int j = i+1 ; j < intValue.size(); j++){
+
+                if( intValue.get(i) == intValue.get(j) ){
+
+                    makeToast("Repeated values");
+
+                    return true;
+
+                }
+
             }
 
         }
         return false;
     }
 
-    public void makeToast(String message){
+    public void makeToast(String message) {
 
-        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
-
-    }
-
-    private void findAllViews() {
-        sendButton = (Button) findViewById(R.id.sendDataButton);
-        number1 = (EditText) findViewById(R.id.firstInput);
-        number2 = (EditText) findViewById(R.id.secondInput);
-        number3 = (EditText) findViewById(R.id.thirdInput);
-        number4 = (EditText) findViewById(R.id.fourthInput);
-        number5 = (EditText) findViewById(R.id.fifthInput);
-        number6 = (EditText) findViewById(R.id.sixthInput);
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
     }
 
     public class InputFilterMinMax implements InputFilter {
 
-        private int min,max;
+        private int min, max;
 
         public InputFilterMinMax(int min, int max) {
             this.min = min;
@@ -168,7 +179,8 @@ public class MainActivity extends AppCompatActivity {
                 int input = Integer.parseInt(dest.toString() + source.toString());
                 if (isInRanges(min, max, input))
                     return null;
-                }catch(NumberFormatException nfe){}
+            } catch (NumberFormatException nfe) {
+            }
             return "";
         }
 
@@ -188,13 +200,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void findAllViews() {
+        sendButton = findViewById(R.id.sendDataButton);
+        number1 = findViewById(R.id.firstInput);
+        number2 = findViewById(R.id.secondInput);
+        number3 = findViewById(R.id.thirdInput);
+        number4 = findViewById(R.id.fourthInput);
+        number5 = findViewById(R.id.fifthInput);
+        number6 = findViewById(R.id.sixthInput);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        findAllViews();
-        setLimiters();
     }
 }

@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -17,9 +18,12 @@ public class ResultsActivity extends AppCompatActivity {
     private Button backButton,reloadButton;
     private TextView usersNumber1, usersNumber2, usersNumber3, usersNumber4, usersNumber5, usersNumber6;
 
-    private int[] usersNumbers = new int[6];
+    //private int[] usersNumbers = new int[6];
+
+    ArrayList<Integer> usersNumbers = new ArrayList<>();
+
     private int[] resultNumbers = new int[6];
-    private int[] Randomize = new int[6];
+    private int[] randomize = new int[6];
     private TextView resultNumber1,resultNumber2,resultNumber3,resultNumber4,resultNumber5,resultNumber6;
 
 
@@ -50,7 +54,8 @@ public class ResultsActivity extends AppCompatActivity {
         TextView[] tvNumbers =  {usersNumber1, usersNumber2, usersNumber3, usersNumber4, usersNumber5, usersNumber6};
 
         // Unpacking values sent from MainActivity
-        usersNumbers = getIntent().getIntArrayExtra("ValuePCG");
+        //usersNumbers = getIntent().getIntArrayExtra("ValuePCG");
+        usersNumbers = getIntent().getIntegerArrayListExtra("ValuePCG");
 
         // Log retreived numbers
         for(int v : usersNumbers){
@@ -60,8 +65,8 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
         // Setting retreived numbers to TextView fields [UsersNumber1 ... ]
-        for(int i = 0 ; i < usersNumbers.length ; i++){
-            tvNumbers[i].setText(String.valueOf(usersNumbers[i]));
+        for(int i = 0 ; i < usersNumbers.size() ; i++){
+            tvNumbers[i].setText(String.valueOf(usersNumbers.get(i)));
         }
     }
 
@@ -90,14 +95,14 @@ public class ResultsActivity extends AppCompatActivity {
         // Randomizing an array of numbers
         for(int i = 0; i < 6; i++)
         {
-            Randomize[i] =  rand.nextInt(49)+1;
+            randomize[i] =  rand.nextInt(49)+1;
         }
 
         // Ascending sorting of randomized numbers
-        Arrays.sort(Randomize);
+        Arrays.sort(randomize);
 
 
-        if(hasRepetitions(Randomize)){
+        if(hasRepetitions(randomize)){
 
             randomizer();
 
@@ -106,7 +111,7 @@ public class ResultsActivity extends AppCompatActivity {
             // Setting randomized numbers
             for(int i = 0 ; i < resultNumbers.length ; i++){
 
-                randNumbers[i].setText(String.valueOf(Randomize[i]));
+                randNumbers[i].setText(String.valueOf(randomize[i]));
 
             }
 
@@ -135,12 +140,12 @@ public class ResultsActivity extends AppCompatActivity {
         TextView[] correctNumbers =  {usersNumber1, usersNumber2, usersNumber3, usersNumber4, usersNumber5, usersNumber6};
 
 
-        for(int i = 0;i < usersNumbers.length ; i++){
+        for(int i = 0;i < usersNumbers.size() ; i++){
 
-            for(int j = 0; j< usersNumbers.length ; j++){
+            for(int j = 0; j< usersNumbers.size() ; j++){
 
-                if(usersNumbers[i] == Randomize[j]){
-                    matchingNumbers[matches]=Randomize[j];
+                if(usersNumbers.get(i) == randomize[j]){
+                    matchingNumbers[matches]= randomize[j];
                     matches++;
                     correctNumbers[i].setTextColor(getResources().getColor(R.color.winColor));
                 }

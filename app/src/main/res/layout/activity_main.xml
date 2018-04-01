@@ -102,7 +102,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/faster_one"
-        android:onClick="sendData"
         android:text="Send"
         android:textStyle="normal"
         android:theme="@style/Button_Color" />
